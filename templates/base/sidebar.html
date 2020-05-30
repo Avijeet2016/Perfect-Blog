@@ -1,0 +1,45 @@
+{% block sidebar %}
+
+<style>
+        .card{
+            box-shadow: 0 16px 48px #E3E7EB;
+        }
+       
+</style>
+
+<!-- Sidebar Widgets Column -->
+<div class="col-md-4 float-right ">
+    <div class="card my-4 ">
+        
+        <div class="card-body">
+          <form action="" method="GET">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search a keyword ..." name="s">&nbsp;
+              
+              <!--
+  <span class="input-group-btn">
+                <button class="btn btn-secondary" type="Submit">Go!</button>
+              </span>
+              -->
+            </div>
+          </form>
+          
+        </div>
+      </div>
+<div class="card my-4">
+        <h5 class="card-header">Category</h5>
+    <div class="card-body">
+      <ul class="list-unstyled mb-0">
+        {% for c in cat %}
+          <li>
+            <a href="{% url 'blog:catwise-post' c.name %}">{{ c.name }}</a>
+          </li>
+        {% endfor %}
+        
+        
+      </ul>
+    </div>
+</div>
+</div>
+
+{% endblock sidebar %}

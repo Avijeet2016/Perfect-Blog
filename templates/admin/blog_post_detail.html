@@ -1,0 +1,23 @@
+{% extends 'admin/preferences.html' %}
+
+{% block content %}
+
+    <div class="container mt-2">
+        <div class="row">
+            <div class="card m-auto col-12 col-md-8">
+                <div class="card-body">
+                    <p><b>Title: </b>{{ post.title }}</p>
+                    <p><b>Slug: </b>{{ post.slug }}</p> 
+                    <p><b>Category: </b>{{ post.category }}</p> 
+                    <p><b>Updated_on: </b>{{ post.updated_on }}</p>
+                    <p><b>Created_on: </b>{{ post.created_on }}</p>
+                    <p><b>Status: </b>{{ post.status }}</p><hr>
+                    <p>{{ post.content|safe }}</p> <br>
+                </div>
+            </div>
+            
+        </div>
+        <br>
+    </div>
+
+{% endblock %}

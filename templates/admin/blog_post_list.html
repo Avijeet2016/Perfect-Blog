@@ -1,0 +1,55 @@
+{% extends 'admin/preferences.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mt-3 m-auto">
+      {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}" role="alert">
+            {{ message }}
+          </div>
+          {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+    <div class="container mt-2">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+              <div class="text-center">
+                <a href="{% url 'blog:create-blog-post' %}" class="btn btn-primary">Create Post</a> 
+              </div><br>
+                <table class="table table-hover table-responsive table-bordered">
+                    <thead class="table-primary">
+                      <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Author</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for p in posts %}
+                          <tr>
+                            <td>{{ p.title }}</td>
+                            <td>{{ p.category }}</td>
+                            <td>{{ p.author }}</td>
+                            <td>{{ p.updated_on}}</td>
+                            <td>{{ p.status }}</td>
+                            <td><a href="{% url 'blog:blog-post-detail' p.id %}" class="btn btn-success">DETAILS</a>&nbsp;
+                            <a href="{% url 'blog:update-blog-post' p.id %}" class="btn btn-primary">UPDATE</a>&nbsp;
+                            <a href="{% url 'blog:delete-blog-post' p.id %}" class="btn btn-danger">DELETE</a></td>
+                          </tr>
+                      {% endfor %}
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

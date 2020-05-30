@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<!--Headers-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Circle Fintech">
+    <meta name="keyword" content="">
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
+    <title>{% block title %}Admin{% endblock %}</title>
+
+    <!-- Icons -->
+    <link href="{% static 'dist/vendors/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'dist/vendors/css/simple-line-icons.min.css' %}" rel="stylesheet">
+    
+
+    <!-- Main styles for this application -->
+    <link href="{% static 'dist/css/style.css' %}" rel="stylesheet">
+
+    {% block extrahead %}
+
+    {% endblock %}
+</head>
+
+
+
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
+<!--Navbar-->
+<header class="app-header navbar bg-primary">
+    <button class="navbar-toggler mobile-sidebar-toggler d-lg-none mr-auto" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <h3 class="m-auto">ADMINISTRATION </h3>
+
+    {% block navbar %}
+
+    {% endblock %}
+
+</header>
+
+<div class="app-body">
+    <!--Sidebar-->
+    
+<div class="sidebar">
+    <nav class="sidebar-nav">
+        <ul class="nav">
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="{% url 'blog:home' %}">
+                    <i class="nav-icon icon-puzzle"></i> <strong>Home</strong></a>
+            </li>
+
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="{% url 'blog:blog-post-list' %}">
+                    <i class="nav-icon icon-puzzle"></i> <strong>Blog</strong></a>
+            </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="{% url 'blog:category-list' %}">
+                    <i class="nav-icon icon-puzzle"></i> <strong>Category</strong></a>
+            </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="{% url 'contact-list' %}">
+                    <i class="nav-icon icon-puzzle"></i> <strong>Contact</strong></a>
+            </li>
+            <li class="nav-item nav-dropdown">
+                <a class="nav-link nav-dropdown-toggle" href="{% url 'create-about' %}">
+                    <i class="nav-icon icon-puzzle"></i> <strong>About</strong></a>
+            </li>
+
+
+        </ul>
+    </nav>
+    
+
+    {% block sidebar %}
+
+        
+
+    {% endblock %}
+</div>
+
+    <!-- Main content -->
+    <main class="main">
+
+        
+
+        <!-- Page contents -->
+        <div class="container-fluid">
+            <div class="animated fadeIn">
+                {% block content %}
+                
+				
+                {% endblock %}
+            </div>
+
+        </div>
+        <!-- /.conainer-fluid -->
+    </main>
+
+
+    <!--Aside bar-->
+    
+<aside class="aside-menu">
+    <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" data-toggle="tab" href="#timeline" role="tab"><i class="icon-list"></i></a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#settings" role="tab"><i class="icon-settings"></i></a>
+        </li>
+    </ul>
+
+    
+</aside>
+
+</div>
+
+
+
+<!--JS-->
+<!-- Bootstrap and necessary plugins -->
+<script src="{% static 'dist/vendors/js/jquery.min.js' %}"></script>
+<script src="{% static 'dist/vendors/js/popper.min.js' %}"></script>
+<script src="{% static 'dist/vendors/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'dist/vendors/js/pace.min.js' %}"></script>
+
+<!-- Plugins and scripts required by all views -->
+<!--Chart JS is commented out due to console errors-->
+<!--<script src="{% static 'dist/vendors/js/Chart.min.js' %}"></script>-->
+
+<!-- CoreUI main scripts -->
+
+<script src="{% static 'dist/js/app.js' %}"></script>
+
+<!-- Plugins and scripts required by this views -->
+
+<!-- Custom scripts required by this view -->
+<script src="{% static 'dist/js/views/main.js' %}"></script>
+<script src="{% static 'custom.js' %}"></script>
+
+{% block script %}
+
+{% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% extends 'admin/preferences.html' %}
+
+{% block content %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 mt-3 m-auto">
+      {% if messages %}
+          {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}" role="alert">
+            {{ message }}
+          </div>
+          {% endfor %}
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+
+    <div class="container mt-2">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+                  <div class="text-center">
+                    <a href="{% url 'blog:create-category' %}" class="btn btn-primary">Create Category</a> 
+                  </div><br>
+                    <table class="table table-hover table-responsive table-bordered">
+                      <thead class="table-primary">
+                        <tr>
+                          <th>Name</th>
+                          <th>Author</th>
+                          <th>Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for cat in categories %}
+                            <tr>
+                              <td>{{ cat.name }}</td>
+                              <td>{{ cat.author }}</td>
+                              <td><a href="{% url 'blog:delete-category' cat.id %}" class="btn btn-danger">DELETE</a>&nbsp;<a href="{% url 'blog:update-category' cat.id %}" class="btn btn-success">UPDATE</a></td>
+                            </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  
+                  
+                
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

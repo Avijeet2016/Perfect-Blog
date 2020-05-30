@@ -1,0 +1,53 @@
+{% extends "base/base.html" %}
+
+{% block title %} Category wise post {% endblock %}      
+
+ {% block content %}
+<style>
+    
+    body {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        background-color: #fdfdfd;
+    }
+
+    .head_text{
+    color: white;
+  }
+    .card{
+    box-shadow: 0 16px 48px #E3E7EB;
+}
+</style>
+        
+            <div class="container">
+              <div class="row">
+      
+              <!-- Blog Entries Column -->
+              <div class="col-md-8 mt-3 left">
+                    {% for post in post_list %}
+                <div class="card mt-2 mb-3" >
+                  <div class="card-body">
+                    <h2 class="card-title">{{ post.title }}</h2>
+                    <p class="card-text text-muted h6"><a href="{% url 'blog:catwise-post' post.category.name %}">{{ post.category.name }} </a>&nbsp; | &nbsp; {{ post.created_on}} </p>
+
+                    <p class="card-text">{{post.content|safe|slice:":200" }}</p>
+                    <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Read More &rarr;</a>
+                  </div>
+                 
+                </div>
+                {% endfor %}
+              </div>
+
+                {% block sidebar %}
+                    {% include 'base/sidebar.html' %}
+                {% endblock sidebar %}
+            </div>
+
+          </div>
+
+          
+        
+        
+
+
+{%endblock%}

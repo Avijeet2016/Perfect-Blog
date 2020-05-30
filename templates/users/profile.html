@@ -1,0 +1,44 @@
+{% extends 'base/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+
+  <div class="container-fluid">
+    <div class="row mt-3">
+      <div class="col-12 col-md-8 m-auto">
+        <div class="card mt-2">
+          {% if user.profile.image %}
+            <img class="card-img-top mx-auto mt-2" src="{{ user.profile.image.url }}" alt="Profile Picture" style="height: 400px; width: 500px;">
+          {% else %}
+          <p></p>
+          {% endif %}
+          <div class="card-body">
+            <h3 class="card-title text-center">{{ user.get_full_name }}</h3>
+            <p><b>Username:</b> {{ user.username }}</p>
+            <p><b>Email:</b> {{ user.email }}</p>
+            <p>{{ user.profile.description }} </p><hr>
+          </div>
+      
+          {% if request.user.is_authenticated %}
+          <div class="col-12 col-md-10 pb-2">
+            <form action="" method="post" enctype="multipart/form-data">
+              {% csrf_token %}
+              {{ u_form | crispy }}
+              {{ p_form | crispy }}
+              <button class="btn btn-success" type="submit">Update</button>
+            </form>
+          </div>
+          {% endif %}
+      
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
+  
+
+{% endblock %}
+
+
