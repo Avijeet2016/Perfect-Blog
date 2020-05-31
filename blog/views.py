@@ -15,7 +15,7 @@ def post_list(request):
             Q(title__icontains=search) | 
             Q(content__icontains=search)
         )
-    paginator = Paginator(post_list, 5)  # 3 posts in each page
+    paginator = Paginator(post_list, 5)  # 5 posts in each page
     page = request.GET.get('page')
     try:
         post_list = paginator.page(page)
